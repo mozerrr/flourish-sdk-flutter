@@ -19,22 +19,22 @@ class LoadPageErrorState extends State<LoadPageErrorView> {
   String get title {
     switch (widget.flourish.language) {
       case Language.english:
-        return 'No internet \n connection';
+        return 'Oops! \n Something went wrong';
       case Language.spanish:
-        return 'No hay conexión \n a internet';
+        return '¡Ups! \n Algo salió mal';
       case Language.portugues:
-        return 'Não há conexão \n de internet';
+        return 'Ops! \n Algo deu errado';
     }
   }
 
   String get description {
     switch (widget.flourish.language) {
       case Language.english:
-        return 'Please, make sure your internet \n connection is working and try again!';
+        return 'We encountered an error while loading \n the page. Please try again later.';
       case Language.spanish:
-        return 'Por favor, asegúrese de que su conexión a \n internet esté funcionando correctamente \n e intente nuevamente.';
+        return 'Encontramos un error al cargar \n la página. Por favor, inténtelo \n de nuevo más tarde.';
       case Language.portugues:
-        return 'Por favor, assegura-se de que sua \n conexão com a internet está funcionando \n corretamente e tente novamente';
+        return 'Encontramos um erro ao carregar \n a página. Por favor, tente \n novamente mais tarde.';
     }
   }
 
@@ -131,6 +131,7 @@ class LoadPageErrorState extends State<LoadPageErrorView> {
                             builder: (context) => WebviewContainer(
                               environment: widget.flourish.environment,
                               apiToken: widget.flourish.token,
+                              platformUrl: widget.flourish.url,
                               language: widget.flourish.language,
                               eventManager: widget.flourish.eventManager,
                               endpoint: widget.flourish.endpoint,

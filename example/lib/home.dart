@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
   Future<void> initFlourishSdk() async {
     final credential = await CredentialFactory().fromEnv();
     final _flourish = await Flourish.create(
-      partnerId: credential.partnerId,
+      uuid: credential.partnerId,
       secret: credential.secretId,
       env: Environment.staging,
       language: Language.english,
