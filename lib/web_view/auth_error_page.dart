@@ -34,10 +34,10 @@ class AuthErrorPageState extends State<AuthErrorPage> {
     try {
       await widget.flourish.refreshToken();
       if (!mounted) return;
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => widget.flourish.home()),
-      );
+      // await Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => widget.flourish.home()),
+      // );
     } catch (e) {
       if (kDebugMode) print(e);
     }
