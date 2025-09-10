@@ -10,7 +10,6 @@ import 'package:flourish_flutter_sdk/events/types/generic_event.dart';
 import 'package:flourish_flutter_sdk/config/language.dart';
 import 'package:flourish_flutter_sdk/events/types/web_view_loaded_event.dart';
 import 'package:flourish_flutter_sdk/network/api_service.dart';
-import 'package:flourish_flutter_sdk/web_view/flourish_token_error_page.dart';
 import 'package:flourish_flutter_sdk/web_view/webview_container.dart';
 import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -263,28 +262,4 @@ class Flourish {
   }
 
   Stream<Event> get onEvent => eventManager.onEvent;
-
-  Widget home() {
-    final errorWidget =
-        onTokenErrorWidget ?? FlourishTokenErrorPage(flourish: this);
-    if (!isTokenValid) return errorWidget;
-    return _openHome();
-  }
-
-  Widget _openHome() {
-    return webviewContainer = WebviewContainer(
-      flourish: this,
-      environment: environment,
-      apiToken: token,
-      platformUrl: url,
-      language: language,
-      eventManager: eventManager,
-      endpoint: endpoint,
-      version: version,
-      trackingId: trackingId,
-      sdkVersion: SdkInfo.version,
-    );
-  }
-
-  WebviewContainer getWebViewContainer() => webviewContainer;
 }
